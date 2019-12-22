@@ -1,0 +1,27 @@
+{
+  "name": "react-roguelike",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf public/dist && webpack",
+    "lint:unit": "tslint -c tslint.json",
+    "lint:all": "tslint -c tslint.json \"src/**/*.ts?(x)\""
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
