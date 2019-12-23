@@ -1,0 +1,9 @@
+@font-face {
+  font-family:"PixelMPlus";font-style:normal;font-weight:normal;
+  src: url('PixelMplus12-Regular.ttf') format('truetype');
+}
+body {
+  font-family: 'PixelMPlus';
+  font-size: 12px;
+  line-height: 12px;
+}
