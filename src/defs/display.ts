@@ -14,5 +14,9 @@ export const objects: { [char: string]: DisplayObject } = {
   '@': {
     name: 'player',
     view: '＠'
+  },
+  '%': {
+    name: 'stair',
+    view: '↓'
   }
 };

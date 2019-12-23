@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import map from '../defs/map';
 import * as func from '../defs/func';
 import * as display from '../defs/display';
-import world from '../stores';
+import dungeon from '../stores';
 
 interface Props {
   size: { width: number; height: number };
@@ -11,8 +11,12 @@ interface Props {
 
 export default observer(Field);
 function Field({ size }: Props) {
-  const position = world.player.position;
-  const floorMap = func.deepcopy(map[world.floor].floor);
+  const position = dungeon.player.position;
+  const floorMap = func.deepcopy(map[dungeon.level].floor);
+  floorMap[map[dungeon.level].exitPosition.y] =
+    floorMap[map[dungeon.level].exitPosition.y].slice(0, map[dungeon.level].exitPosition.x) +
+    '%' +
+    floorMap[map[dungeon.level].exitPosition.y].slice(map[dungeon.level].exitPosition.x + 1);
   floorMap[position.y] =
     floorMap[position.y].slice(0, position.x) + '@' + floorMap[position.y].slice(position.x + 1);
 

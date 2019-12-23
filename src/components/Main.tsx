@@ -24,7 +24,7 @@ function Main() {
 
   return (
     <div className="main" style={size}>
-      <div>{'time: ' + stores.time}</div>
+      <div>{`time: ${stores.time}, floor: B${stores.level + 1}F`}</div>
       <Field size={{ width: size.width, height: size.height - 12 }} />
     </div>
   );
