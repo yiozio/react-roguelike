@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import map from '../defs/map';
 import * as func from '../defs/func';
 import * as display from '../defs/display';
-import dungeon from '../stores';
+import dungeon from '../stores/dungeon';
 
 interface Props {
   size: { width: number; height: number };

@@ -1,4 +1,4 @@
-import stores from '../stores';
+import stores from '../stores/dungeon';
 
 export default (e: KeyboardEvent) => {
   switch (e.keyCode) {

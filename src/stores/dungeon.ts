@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import map from '../defs/map';
+import system from './system';
 
 interface Position {
   x: number;
@@ -17,6 +18,7 @@ class Dungeon {
 
   constructor() {
     this.player.position = { ...map[this.level].initPosition };
+    system.log('スタート');
   }
 
   @action
@@ -24,7 +26,10 @@ class Dungeon {
     const position = this.player.position;
     const x = position.x + move.x;
     const y = position.y + move.y;
-    if (map[this.level].floor[y][x] !== '.') return;
+    if (map[this.level].floor[y][x] !== '.') {
+      system.log('壁にぶつかりました。');
+      return;
+    }
     this.player.position = { x, y };
     this.time += this.player.speed;
   }
@@ -33,6 +38,7 @@ class Dungeon {
     if (this.diffPosition(this.player.position, map[this.level].exitPosition)) {
       this.level += 1;
       this.player.position = { ...map[this.level].initPosition };
+      system.log(`地下${this.level + 1}階に下りました。`);
     } else {
       this.time += this.player.speed;
     }

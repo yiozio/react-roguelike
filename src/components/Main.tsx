@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import Field from './Field';
+import Log from './Log';
 import KeyEvent from '../defs/KeyEvent';
-import stores from '../stores';
+import stores from '../stores/dungeon';
 
 export default observer(Main);
 function Main() {
@@ -25,7 +26,8 @@ function Main() {
   return (
     <div className="main" style={size}>
       <div>{`time: ${stores.time}, floor: B${stores.level + 1}F`}</div>
-      <Field size={{ width: size.width, height: size.height - 12 }} />
+      <Field size={{ width: size.width, height: size.height - 132 }} />
+      <Log size={{ width: size.width, height: 120 }} />
     </div>
   );
 }
