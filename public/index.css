@@ -7,3 +7,16 @@ body {
   font-size: 12px;
   line-height: 12px;
 }
+
+.main {
+  background: #024
+}
+.floor {
+  color: #777
+}
+.wall {
+  color: #ccc
+}
+.player {
+  color: #FFF
+}
