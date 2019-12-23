@@ -1,25 +1,31 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
 import map from '../defs/map';
 import * as func from '../defs/func';
 import * as display from '../defs/display';
+import world from '../stores';
 
 interface Props {
   size: { width: number; height: number };
 }
-export default function Field({ size }: Props) {
-  const position = { x: 2, y: 2 };
-  const mapIns = func.deepcopy(map);
-  mapIns[position.y] =
-    mapIns[position.y].slice(0, position.x) + '2' + mapIns[position.y].slice(position.x + 1);
+
+export default observer(Field);
+function Field({ size }: Props) {
+  const position = world.player.position;
+  const floorMap = func.deepcopy(map[world.floor].floor);
+  floorMap[position.y] =
+    floorMap[position.y].slice(0, position.x) + '@' + floorMap[position.y].slice(position.x + 1);
 
   return (
     <div className="field" style={size}>
-      {mapIns.map(line => (
-        <div>
+      {floorMap.map((line, y) => (
+        <div key={y}>
           {Array.from(line)
             .map(elem => display.objects[elem])
-            .map(obj => (
-              <span className={obj.name}>{obj.view}</span>
+            .map((obj, x) => (
+              <span key={x} className={obj.name}>
+                {obj.view}
+              </span>
             ))}
         </div>
       ))}
