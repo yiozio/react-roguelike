@@ -10,8 +10,40 @@ body {
   overflow: hidden;
 }
 
+* {
+  user-select: none;
+}
+
 .main {
-  background: #024
+  background: #024;
+  position: relative;
+}
+.panel {
+  border: solid 1px #FFF;
+  box-sizing: border-box;
+  padding: 1px;
+  position: absolute;
+}
+.panel > div {
+  width: 100%;
+  height: 100%;
+}
+.panel > div:last-child {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  cursor: se-resize;
+}
+.panel > div:last-child::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 15px;
+  border: solid 1px #FFF;
+  transform: translate(5px, -2px) rotate(45deg);
 }
 .logs {
   overflow: scroll;

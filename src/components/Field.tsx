@@ -5,12 +5,8 @@ import * as func from '../defs/func';
 import * as display from '../defs/display';
 import dungeon from '../stores/dungeon';
 
-interface Props {
-  size: { width: number; height: number };
-}
-
 export default observer(Field);
-function Field({ size }: Props) {
+function Field() {
   const position = dungeon.player.position;
   const floorMap = func.deepcopy(map[dungeon.level].floor);
   floorMap[map[dungeon.level].exitPosition.y] =
@@ -21,7 +17,7 @@ function Field({ size }: Props) {
     floorMap[position.y].slice(0, position.x) + '@' + floorMap[position.y].slice(position.x + 1);
 
   return (
-    <div className="field" style={size}>
+    <div className="field">
       {floorMap.map((line, y) => (
         <div key={y}>
           {Array.from(line)
