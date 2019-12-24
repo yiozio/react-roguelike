@@ -2,6 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import Field from './Field';
 import Log from './Log';
+import Status from './Status';
 import Panel from './Panel';
 import KeyEvent from '../defs/KeyEvent';
 import stores from '../stores/dungeon';
@@ -29,9 +30,15 @@ function Main() {
       <div>{`time: ${stores.time}, floor: B${stores.level + 1}F`}</div>
       <Panel
         position={{ left: 1, top: 13 }}
-        size={{ width: size.width - 2, height: size.height - 135 }}
+        size={{ width: size.width - 152, height: size.height - 135 }}
       >
         <Field />
+      </Panel>
+      <Panel
+        position={{ left: size.width - 150, top: 13 }}
+        size={{ width: 149, height: 12 * 5 + 3 }}
+      >
+        <Status />
       </Panel>
       <Panel
         position={{ left: 1, top: size.height - 121 }}

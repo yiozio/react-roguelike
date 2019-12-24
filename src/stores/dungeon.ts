@@ -65,7 +65,8 @@ class Dungeon {
   @computed get status() {
     return {
       name: ActorObjects[this.player.id].name,
-      exp: this.player.exp,
+      lvl: 1,
+      next: [0, this.player.exp],
       hp: this.player.hp,
       hpmax: ActorObjects[this.player.id].hpmax,
       str: ActorObjects[this.player.id].str,
