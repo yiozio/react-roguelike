@@ -92,13 +92,11 @@ function generateMap(rate: number, count: number): Map {
           if (floorPoints.has(p)) {
             let ps = '';
             floorPoints.forEach(fp => (ps += ';' + fp));
-            console.log(`${p} in F ${ps}`);
             continue build;
           }
           if (wallPoints.has(p)) {
             let ps = '';
             wallPoints.forEach(wp => (ps += ';' + wp));
-            console.log(`${p} in W ${ps}`);
             continue build;
           }
           newFloorPoints.add(p);
