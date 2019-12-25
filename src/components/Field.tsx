@@ -9,9 +9,25 @@ import dungeon from '../stores/dungeon';
 export default observer(Field);
 function Field() {
   const floorMap = func.deepcopy(map(dungeon.level).floor);
+  const size = { width: floorMap[0].length * 12, height: floorMap.length * 12 };
+  const playerPos = { ...dungeon.player.position };
+  playerPos.x = playerPos.x * 12 + 6;
+  playerPos.y = playerPos.y * 12 + 6;
 
   return (
-    <div className="field">
+    <div
+      className="field"
+      style={{ width: size.width, height: size.height }}
+      ref={dom => {
+        if (!dom) return;
+        const parent = dom.parentElement;
+        if (!parent) return;
+        const sightX = parent.clientWidth / 2;
+        const sightY = parent.clientHeight / 2;
+        parent.scrollLeft = playerPos.x - sightX;
+        parent.scrollTop = playerPos.y - sightY;
+      }}
+    >
       {floorMap.map((line, y) => (
         <div key={y}>
           {Array.from(line)
