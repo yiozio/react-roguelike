@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf public/dist && webpack",
+    "build:prod": "rimraf public/dist && webpack --mode 'production'",
     "lint:unit": "tslint -c tslint.json",
     "lint:all": "tslint -c tslint.json \"src/**/*.ts?(x)\""
   },

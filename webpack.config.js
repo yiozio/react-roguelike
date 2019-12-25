@@ -1,7 +1,9 @@
 const path = require('path');
 
-module.exports = {
-    mode: 'development',
+const DEVELOPMENT = 'development';
+
+module.exports = (env, argv) => ({
+    mode: argv.mode ? argv.mode : DEVELOPMENT,
     entry: {rogue: './src/index.tsx'},
     module: {
         rules: [{
@@ -9,7 +11,7 @@ module.exports = {
             loader: ['ts-loader']
         }]
     },
-    devtool: 'source-map',
+    devtool: !argv.mode || argv.mode === DEVELOPMENT ? 'source-map' : undefined,
     resolve: {
         extensions: [ '.tsx', '.ts', '.js' ]
     },
@@ -20,4 +22,4 @@ module.exports = {
     stats: {
         children: false
     }
-}
+})
