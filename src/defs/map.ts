@@ -7,31 +7,26 @@ interface Map {
   initPosition: Point;
 }
 
-const map: Map[] = [
+const map: (Map | (() => Map))[] = [
   {
-    floor: [
-      '1111111111111',
-      '1000000000001',
-      '1000000000001',
-      '1000000100001',
-      '1000000020001',
-      '1000000001111',
-      '1111111111111'
-    ],
-    initPosition: { x: 2, y: 2 }
-  },
-  {
-    floor: ['1111111111', '1000000001', '1000000021', '1111111111'],
+    floor: ['1111111111111', '1000000000021', '1111111111111'],
     initPosition: { x: 1, y: 1 }
   },
-  generateMap(1, 2),
-  generateMap(0.5, 50),
-  generateMap(1, 10),
-  generateMap(0, 10),
-  generateMap(0.5, 10)
+  () => generateMap(0.5, 50),
+  () => generateMap(0, 50),
+  () => generateMap(1, 50),
+  () => generateMap(0.5, 50),
+  () => generateMap(0.5, 50)
 ];
 
-export default map;
+export default (mapIndex: number): Map => {
+  let m = map[mapIndex];
+  if (typeof m === 'function') {
+    m = m();
+    map[mapIndex] = m;
+  }
+  return m;
+};
 
 function getRandomSize() {
   const ROOM_SIZE = [2, 3, 4, 5];

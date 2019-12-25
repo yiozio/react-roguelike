@@ -8,7 +8,7 @@ import dungeon from '../stores/dungeon';
 
 export default observer(Field);
 function Field() {
-  const floorMap = func.deepcopy(map[dungeon.level].floor);
+  const floorMap = func.deepcopy(map(dungeon.level).floor);
 
   return (
     <div className="field">

@@ -28,7 +28,7 @@ class Dungeon {
   @observable time = 0;
 
   constructor() {
-    this.player.position = { ...map[this.level].initPosition };
+    this.player.position = { ...map(this.level).initPosition };
     system.log('スタート');
   }
 
@@ -36,7 +36,7 @@ class Dungeon {
   move(move: Position) {
     const x = this.player.position.x + move.x;
     const y = this.player.position.y + move.y;
-    const g = GroundObjects[Number(map[this.level].floor[y][x])];
+    const g = GroundObjects[Number(map(this.level).floor[y][x])];
     if (!g.through) {
       system.log(`${g.name}にぶつかりました。`);
       return;
@@ -51,11 +51,11 @@ class Dungeon {
   action() {
     const x = this.player.position.x;
     const y = this.player.position.y;
-    const g = GroundObjects[Number(map[this.level].floor[y][x])];
+    const g = GroundObjects[Number(map(this.level).floor[y][x])];
 
     if (g.type === 'stair') {
       this.level += 1;
-      this.player.position = { ...map[this.level].initPosition };
+      this.player.position = { ...map(this.level).initPosition };
       system.log(`地下${this.level + 1}階に下りました。`);
     } else {
       this.time += this.player.speed;
