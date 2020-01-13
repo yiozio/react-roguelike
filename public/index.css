@@ -1,6 +1,6 @@
 @font-face {
   font-family:"PixelMPlus";font-style:normal;font-weight:normal;
-  src: url('PixelMplus12-Regular.ttf') format('truetype');
+  src: url('/PixelMplus12-Regular.ttf') format('truetype');
 }
 body {
   font-family: 'PixelMPlus';
@@ -77,5 +77,5 @@ body {
   color: #ccc
 }
 .player {
-  color: #FFF
+  color: #FFF;
 }
